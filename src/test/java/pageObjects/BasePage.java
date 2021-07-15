@@ -292,7 +292,7 @@ public class BasePage {
         String[] arryElements = sExpectedValues.split("#");
         for(int iStart = 0; iStart<arryElements.length; iStart++){
             try{
-                String myObject = "//li[text()='"+arryElements[iStart]+"')]";
+                String myObject = "//li[text()='"+arryElements[iStart]+"']";
                 this.waitime(2000);
                 SL.findElementByXpathAndClick(myObject);
             } catch (Exception e){

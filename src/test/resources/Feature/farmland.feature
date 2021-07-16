@@ -14,12 +14,19 @@ Feature: Check farmland function
       Then :Check whether the query matches "<result>"
       Examples:
         | name | type | result |
-        | 18-3 |      | 18-3   |
+        | 18-1 |      | 18-1   |
         | 18-2 | 水田   | 18-2   |
+        |      | 水田   | 18-2   |
 
   Scenario: Open view page
     Given Check View button
     Then Closing details
+
+
+  Scenario: Open the field Edit page
+    Given Check Edit button
+    When Modification of field name and remarks
+    Then Validation results
 
   Scenario: out login
     Given loginout

@@ -1,5 +1,6 @@
 package Setprecision;
 
+import Random.random;
 import Utility.Logback;
 import Utility.TestLogin;
 import Utility.Util;
@@ -30,8 +31,10 @@ public class Farmland {
     //private String btnsee = "(//div[text()='18-2']/ancestor::tr//button/span[text()='查看'])[2]";
     private String btnsee = "(//button/span[text()='查看'])[2]";
     private String closefarm = "//i[@class='el-icon-close']";
-
-
+    private String btnEdit = "(//button/span[text()='编辑'])[2]";
+    private String inputFarmName = "//input[@placeholder='请输入田块名称']";
+    private String inputtextarea = "//textarea[@placeholder='请输入内容']";
+    private String btnSave = "//button/span[text()='保存']";
 
     @Given("^: login$")
     public void login() throws InterruptedException{
@@ -121,9 +124,34 @@ public class Farmland {
 
     @Given("^loginout$")
     public void loginout() {
-        Util.driver.quit();
+
+        //Util.driver.quit();
     }
 
 
+    @Given("^Check Edit button$")
+    public void checkEditButton() {
+        new SelLibrary().findElementByXpathAndClick(btnEdit);
+        bp.waitime(3000);
+        
+    }
 
+    @When("^Modification of field name and remarks$")
+    public void modificationOfFieldNameAndUpdate() {
+        String remark = random.getStringRandom(100);
+        WebElement name =  new SelLibrary().findElementByXpath(inputFarmName);
+        name.clear();
+        name.sendKeys("test");
+        bp.waitime(3000);
+        WebElement remarks = new SelLibrary().findElementByXpath(inputtextarea);
+        remarks.clear();
+        remarks.sendKeys(remark);
+        bp.waitime(3000);
+        new SelLibrary().findElementByXpathAndClick(btnSave);
+        bp.waitime(3000);
+    }
+
+    @Then("^Validation results$")
+    public void validationResults() {
+    }
 }

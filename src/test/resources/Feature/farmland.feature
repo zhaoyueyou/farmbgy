@@ -16,7 +16,7 @@ Feature: Check farmland function
         | name | type | result |
         | 18-1 |      | 18-1   |
         | 18-2 | 水田   | 18-2   |
-        |      | 水田   | 18-2   |
+        |      | 水田   | 18-2    |
 
   Scenario: Open view page
     Given Check View button

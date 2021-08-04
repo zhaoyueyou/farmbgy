@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class TestLogin {
     //登陆操作
     public static void login(WebDriver driver, String Account, String password) throws InterruptedException {
-        driver.get("http://69.231.162.38/#/account/login");
+        driver.get("http://sit.farmbgy.com/#/account/login");
         //设置寻找一个元素的时间
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //通过name定位账号输入框

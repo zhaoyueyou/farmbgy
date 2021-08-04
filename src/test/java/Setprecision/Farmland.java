@@ -27,6 +27,7 @@ public class Farmland {
     private String Selectclick = "//div[text()='田块类型：']/../div[2]//span";
 //    private String selectType = "//span[text()='水田']/../..";
     private String btnquery = "//span[text()=' 查询']/..";
+    private String btnReset = "//span[text() = ' 重置']/..";
     private String checkquery = "//table//tr[1]//td[3]";
     //private String btnsee = "(//div[text()='18-2']/ancestor::tr//button/span[text()='查看'])[2]";
     private String btnsee = "(//button/span[text()='查看'])[2]";
@@ -70,6 +71,7 @@ public class Farmland {
 
         /*String farmname = new SelLibrary().getTextByXpath(farmtgename);
         bp.waitime(2000);*/
+
         WebElement farm = new SelLibrary().findElementByXpath(Logback.properties.getProperty("输入田块名称"));
         farm.clear();
         bp.waitime(2000);
@@ -82,6 +84,7 @@ public class Farmland {
     public void selectedFieldType(String type) throws Throwable {
 //        new SelLibrary().findElementByXpathAndClick(Logback.properties.getProperty("田块类型"));
 //        new SelLibrary().findElementByXpathAndClick(Logback.properties.getProperty("选中田块"));
+
          new SelLibrary().findElementByXpathAndClick(Selectclick);
          String selectType = "//span[text()='"+ type +"']";
          new SelLibrary().findElementByXpathAndClick(selectType);
@@ -101,7 +104,7 @@ public class Farmland {
             bp.waitime(3000);
             String text = new SelLibrary().getTextByXpath(Logback.properties.getProperty("检查结果"));
             Assert.assertEquals(text, result);
-
+           // new SelLibrary().findElementByXpathAndClick(btnReset);
 
     }
 
@@ -153,5 +156,6 @@ public class Farmland {
 
     @Then("^Validation results$")
     public void validationResults() {
+
     }
 }

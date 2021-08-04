@@ -301,4 +301,19 @@ public class BasePage {
         }
     }
 
+    //单击的记录将展开，以显示进一步的信息
+    public void ClickedElementLikeDiv(String arg0){
+        String sExpectedValues = arg0;
+        String[] arryElements = sExpectedValues.split("#");
+        for(int iStart = 0; iStart<arryElements.length; iStart++){
+            try{
+                String myObject = "//div[text()='"+arryElements[iStart]+"']";
+                this.waitime(2000);
+                SL.findElementByXpathAndClick(myObject);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
